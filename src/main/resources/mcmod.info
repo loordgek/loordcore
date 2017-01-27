@@ -1,0 +1,18 @@
+[
+  {
+    "modid": "loordcore",
+    "name": "Loordcore",
+    "description": "A libMod for loordgeks mods",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": [
+      "loordgek"
+    ],
+    "credits": "",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]
