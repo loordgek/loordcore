@@ -1,6 +1,7 @@
 package loordgek.loordcore.network;
 
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.math.BlockPos;
 
 import java.util.List;
 
@@ -21,11 +22,7 @@ public interface IDescSync {
 
     void readFromPacket(NBTTagCompound tag);
 
-    int getX();
-
-    int getY();
-
-    int getZ();
+    BlockPos getPosition();
 
     void onDescUpdate();
 

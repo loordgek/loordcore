@@ -2,23 +2,26 @@ package loordgek.loordcore.util.item;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.items.IItemHandler;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class InventoryUtil {
-    public static ItemStack[] getStacks(IItemHandler itemHandler) {
-        ItemStack[] stacks = new ItemStack[itemHandler.getSlots()];
+
+    public static NonNullList<ItemStack> getStacks(IItemHandler itemHandler) {
+        NonNullList<ItemStack> itemStacks = NonNullList.withSize(itemHandler.getSlots(), ItemStack.EMPTY);
         for (int i = 0; i < itemHandler.getSlots(); i++) {
-            stacks[i] = itemHandler.getStackInSlot(i);
+            itemStacks.set(i, itemHandler.getStackInSlot(i));
         }
-        return stacks;
+        return itemStacks;
     }
+
     public static boolean hasItemHanderItems(IItemHandler itemHandler) {
         boolean[] array = new boolean[itemHandler.getSlots()];
         for (int i = 0; i < itemHandler.getSlots(); i++) {
-            if (itemHandler.getStackInSlot(i) == null) {
+            if (itemHandler.getStackInSlot(i) == ItemStack.EMPTY) {
                 array[i] = true;
             }
         }

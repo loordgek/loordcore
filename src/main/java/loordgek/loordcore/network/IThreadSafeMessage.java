@@ -6,16 +6,16 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 
 public interface IThreadSafeMessage extends IMessage {
     boolean isThreadSafe();
-    void toPacketbuf(PacketBuffer buffer);
-    void fromPacketbuf(PacketBuffer buffer);
+    void toPacketBuf(PacketBuffer buffer);
+    void fromPacketBuf(PacketBuffer buffer);
 
     @Override
     default void fromBytes(ByteBuf buf){
-        fromPacketbuf(new PacketBuffer(buf));
+        fromPacketBuf(new PacketBuffer(buf));
     }
 
     @Override
     default void toBytes(ByteBuf buf){
-        toPacketbuf(new PacketBuffer(buf));
+        toPacketBuf(new PacketBuffer(buf));
     }
 }

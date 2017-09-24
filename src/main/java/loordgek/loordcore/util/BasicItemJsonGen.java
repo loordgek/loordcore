@@ -1,6 +1,7 @@
 package loordgek.loordcore.util;
 
 import com.google.gson.stream.JsonWriter;
+import loordgek.loordcore.Register.IVariantLookup;
 
 import java.io.File;
 import java.io.FileWriter;

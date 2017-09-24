@@ -8,6 +8,7 @@ import net.minecraftforge.fluids.FluidTank;
 
 import java.lang.reflect.Field;
 import java.util.List;
+import java.util.UUID;
 
 public class NBTUtil {
 
@@ -41,6 +42,11 @@ public class NBTUtil {
                 FluidTank fluidTank = (FluidTank) object;
                 nbtcomp.setTag(field.getName(), fluidTank.writeToNBT(nbtcomp));
                 nbt.appendTag(nbtcomp);
+                continue;
+            }
+            if (object instanceof UUID){
+                UUID uuid = (UUID) object;
+                nbtcomp.setUniqueId(field.getName(), uuid);
             }
         }
         NBTTagCompound tagCompound = new NBTTagCompound();
@@ -81,6 +87,10 @@ public class NBTUtil {
             if (object instanceof FluidTank){
                 FluidTank fluidTank = (FluidTank) object;
                 fluidTank.readFromNBT(comp.getCompoundTag(field.getName()));
+            }
+            if (object instanceof UUID){
+                field.set(te, comp.getUniqueId(field.getName()));
+
             }
         }
     }

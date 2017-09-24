@@ -1,7 +1,8 @@
 package loordgek.loordcore.client;
 
-import loordgek.extragenarators.client.gui.widgets.WidgetBase;
-import loordgek.extragenarators.util.MathUtil;
+
+import loordgek.loordcore.client.gui.widgets.WidgetBase;
+import loordgek.loordcore.util.MathUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.GlStateManager;

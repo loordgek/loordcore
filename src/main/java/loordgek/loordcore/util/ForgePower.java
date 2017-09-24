@@ -1,7 +1,5 @@
 package loordgek.loordcore.util;
 
-import lombok.Getter;
-import lombok.Setter;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.common.util.INBTSerializable;
@@ -9,11 +7,7 @@ import net.minecraftforge.energy.IEnergyStorage;
 
 public class ForgePower implements IEnergyStorage, INBTSerializable<NBTTagCompound> {
     protected final int initialcapacity;
-    @Getter
-    @Setter
     protected double energy;
-    @Getter
-    @Setter
     protected double capacity;
     protected int maxReceive;
     protected int maxExtract;
@@ -65,7 +59,7 @@ public class ForgePower implements IEnergyStorage, INBTSerializable<NBTTagCompou
         float energyReceived = Math.min((float) capacity - Floatenergy, Math.min((float) this.maxReceive, maxReceive));
         if (!simulate) {
             Floatenergy += energyReceived;
-            int floor_float = MathHelper.floor_float(Floatenergy);
+            int floor_float = MathHelper.floor(Floatenergy);
             receiveEnergy(floor_float, false);
             Floatenergy -= floor_float;
         }
@@ -122,5 +116,13 @@ public class ForgePower implements IEnergyStorage, INBTSerializable<NBTTagCompou
 
     public void Increasecapacity(int TimesMultiplier){
         capacity = initialcapacity * TimesMultiplier;
+    }
+
+    public void setEnergy(double energy) {
+        this.energy = energy;
+    }
+
+    public void setCapacity(double capacity) {
+        this.capacity = capacity;
     }
 }

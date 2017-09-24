@@ -1,7 +1,7 @@
 package loordgek.loordcore.util;
 
 
-import loordgek.extragenarators.ref.Reference;
+import loordgek.loordcore.ref.Reference;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.fml.common.FMLLog;
@@ -46,7 +46,7 @@ public class LogHelper {
         log(Level.WARN, object);
     }
     public static void logItemstack(ItemStack stack){
-        info(stack.getItem().getUnlocalizedName() + " stackSize " + stack.stackSize + " Metadata " + stack.getMetadata() + " NBT " + stack.getTagCompound());
+        info(stack.getItem().getUnlocalizedName() + " stackSize " + stack.getCount() + " Metadata " + stack.getMetadata() + " NBT " + stack.getTagCompound());
     }
     public static void logEnergyStorage(IEnergyStorage energyStorage){
         info("EnergyStored " + energyStorage.getEnergyStored() + " MaxEnergyStored " + energyStorage.getMaxEnergyStored());

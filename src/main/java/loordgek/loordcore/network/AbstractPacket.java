@@ -1,6 +1,6 @@
 package loordgek.loordcore.network;
 
-import loordgek.extragenarators.Extragenarators;
+import loordgek.loordcore.Loordcore;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.IThreadListener;
 import net.minecraft.world.WorldServer;
@@ -17,21 +17,21 @@ public abstract class AbstractPacket <REQ extends IThreadSafeMessage> implements
     @Override
     public  REQ onMessage(REQ message, MessageContext ctx) {
         if(ctx.side == Side.SERVER) {
-            EntityPlayer player = ctx.getServerHandler().playerEntity;
+            EntityPlayer player = ctx.getServerHandler().player;
             if (message.isThreadSafe()){
                 handleServerSide(message, player, true);
             }
             else {
-                IThreadListener serverside = (WorldServer)player.worldObj;
+                IThreadListener serverside = (WorldServer)player.world;
                 serverside.addScheduledTask(() -> handleServerSide(message, player, false));
             }
         } else {
             if (message.isThreadSafe()){
-                handleClientSide(message, Extragenarators.proxy.getclientplayer(), true);
+                handleClientSide(message, Loordcore.proxy.getclientplayer(), true);
             }
             else {
-                IThreadListener clientside = Extragenarators.proxy.getMinecraft();
-                clientside.addScheduledTask(() -> handleClientSide(message, Extragenarators.proxy.getclientplayer(), false));
+                IThreadListener clientside = Loordcore.proxy.getMinecraft();
+                clientside.addScheduledTask(() -> handleClientSide(message, Loordcore.proxy.getclientplayer(), false));
             }
         }
         return null;
